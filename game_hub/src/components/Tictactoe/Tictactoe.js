@@ -52,7 +52,7 @@ export const Tictactoe = () => {
     }
 
     const updateCellValue = index => e => {
-      if(cellBoard[index][0] === null && isStarted){
+      if(cellBoard[index].value == null && isStarted){
         let newCellBoard = [...cellBoard];
         if (turnOX) {
           newCellBoard[index] = {...newCellBoard[index], value: 'X'}
@@ -61,6 +61,7 @@ export const Tictactoe = () => {
           newCellBoard[index] = {...newCellBoard[index], value: 'O'}
         }
         setCellBoard(newCellBoard);
+        changePlayer();
     }
   }
 

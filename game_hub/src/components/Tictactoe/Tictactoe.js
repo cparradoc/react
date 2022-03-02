@@ -51,18 +51,46 @@ export const Tictactoe = () => {
     ]);
   }
 
+  //actualización de una celda tras hacer click sobre ella
   const updateCellValue = index => e => {
     if(cellBoard[index].value == null && isStarted){
       let newCellBoard = [...cellBoard];
       if (turnOX) {
-        newCellBoard[index] = {...newCellBoard[index], value: 'X'}
+        newCellBoard[index] = {...newCellBoard[index], value: 'X'};
       }
       else {
-        newCellBoard[index] = {...newCellBoard[index], value: 'O'}
+        newCellBoard[index] = {...newCellBoard[index], value: 'O'};
       }
       setCellBoard(newCellBoard);
+      checkWin();
       changePlayer();
     }
+  }
+
+  //caso en el que un jugador gane
+  const checkWin =() =>{
+    for (let index in winCase) {
+      let firstElement = cellBoard[winCase[index][0]].value;
+      let secondElement = cellBoard[winCase[index][1]].value;
+      let thirdElement = cellBoard[winCase[index][2]].value;
+      console.log(firstElement);
+      console.log(secondElement);
+      console.log(thirdElement);
+      if(firstElement != null && secondElement != null && thirdElement != null) {
+        if(turnOX){
+          console.log("Ha ganado O");
+        }
+        else {
+          console.log("Ha ganado X");
+        }
+      }
+    }
+      
+  }
+
+  //caso de empate
+  function checkEndGame() {
+
   }
 
   return (

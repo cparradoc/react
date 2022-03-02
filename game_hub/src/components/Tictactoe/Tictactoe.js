@@ -40,7 +40,15 @@ export const Tictactoe = () => {
     function restartGame() {
       setGameFinished(false);
       setIsStarted(1);
+      initializeBoard();
+    }
 
+    function initializeBoard() {
+      setCellBoard([
+        [null, null, null],
+        [null, null, null],
+        [null, null, null],
+      ]);
     }
 
     return (
@@ -56,7 +64,10 @@ export const Tictactoe = () => {
         ) : (
           <h2>Es el turno de O</h2>
         )}
-        <Grid container></Grid>
+        <Grid container className='board' spacing={0}   >
+          {cellBoard.map((cell) =>
+          <Grid key={cell.id} item xs={9}><button >{cell.value}</button></Grid>)}
+        </Grid>
       </div>
     );
   };

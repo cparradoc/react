@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import logo from './logo.svg';
 import { Home } from './components/Home/Home';
 import { Counter } from './components/Counter/Counter';
+import { Tictactoe } from './components/Tictactoe/Tictactoe';
+import { Hangman } from './components/Hangman/Hangman';
+import { Sudoku } from './components/Sudoku/Sudoku';
 import './App.css';
 
 function App() {
@@ -14,8 +17,11 @@ function App() {
         </header>
 
         <Routes>
-          <Route path="/counter" exact component={Counter} />
-          <Route path="/" exact component={Home} />
+          <Route path="/counter" exact element={<Counter />} />
+          <Route path="/" exact element={<Home />} />
+          <Route path="/tictactoe" exact element={<Tictactoe />} />
+          <Route path="/hangman" exact element={<Hangman />} />
+          <Route path="/sudoku" exact element={<Sudoku />} />
         </Routes>
 
       </div>

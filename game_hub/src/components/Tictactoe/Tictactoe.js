@@ -80,7 +80,7 @@ export const Tictactoe = () => {
         )}
         <Grid container spacing={3}>
           {cellBoard.map((cell, index) =>
-            <Grid  key={cell.id} item xs={4} xl={4}>
+            <Grid  key={index} item xs={4} xl={4}>
               <button className='item' onClick={updateCellValue(index)}>{cell.value}</button>
             </Grid>)
           }

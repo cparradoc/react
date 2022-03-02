@@ -1,9 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Router } from 'react-router-dom';
+
 import { Home } from './components/Home';
 import { Counter } from './components/Counter';
+
+import logo from './logo.svg';
 import './App.css';
-import { Router } from 'react-router-dom';
 
 function App() {
   return (

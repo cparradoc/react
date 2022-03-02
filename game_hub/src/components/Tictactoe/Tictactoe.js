@@ -5,10 +5,16 @@ import './Tictactoe.css'
 export const Tictactoe = () => {
 
     //propiedad del estado de tipo boolean para comenzar/resetear partida
-    const [isStarted, setIsStarted] = useState(false);
+    const [isStarted, setIsStarted] = useState(0);
+
+    const winCase = [ 
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, 6]
+    ];
 
     useEffect(() => {
-        if(isStarted) {
+        if(!isStarted) {
             console.log("Partida comenzada!");
         } else {
             console.log("Partida reiniciada!");
@@ -16,12 +22,14 @@ export const Tictactoe = () => {
     }, [isStarted]);
 
 
-
+    function restartGame() {
+      setIsStarted(1);
+    }
 
     return (
       <div>
         <h1>Tictactoe</h1>
-        <button className="start" onClick={() => setIsStarted(!isStarted)}>Start Game</button>
+        <button className="start" onClick={restartGame}>Start Game</button>
       </div>
     );
   };

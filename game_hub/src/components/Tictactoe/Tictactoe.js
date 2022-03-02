@@ -51,14 +51,18 @@ export const Tictactoe = () => {
       ]);
     }
 
-    const updateCellValue = index => {
-      cellBoard.map((index) => {
-        let newList = [...cellBoard];
-        if(index.value == null && isStarted) {
-      turnOX? (newList[index].value = 'X') : (newList[index].value = 'O');
-      setCellBoard(newList);
-    }}
-    );}
+    const updateCellValue = index => e => {
+      if(cellBoard[index][0] === null && isStarted){
+        let newCellBoard = [...cellBoard];
+        if (turnOX) {
+          newCellBoard[index] = {...newCellBoard[index], value: 'X'}
+        }
+        else {
+          newCellBoard[index] = {...newCellBoard[index], value: 'O'}
+        }
+        setCellBoard(newCellBoard);
+    }
+  }
 
     return (
       <div>
@@ -74,9 +78,9 @@ export const Tictactoe = () => {
           <h2>Es el turno de O</h2>
         )}
         <Grid container spacing={3}>
-          {cellBoard.map(cell =>
+          {cellBoard.map((cell, index) =>
             <Grid  key={cell.id} item xs={4} xl={4}>
-              <button className='item'>{cell.value}</button>
+              <button className='item' onClick={updateCellValue(index)}>{cell.value}</button>
             </Grid>)
           }
         </Grid>

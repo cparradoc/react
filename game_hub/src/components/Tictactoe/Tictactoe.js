@@ -6,6 +6,8 @@ export const Tictactoe = () => {
 
     //propiedad del estado de tipo boolean para comenzar/resetear partida
     const [isStarted, setIsStarted] = useState(0);
+    //propiedad para terminar la partida
+    const [isGameFinished, setGameFinished] = useState(false);
 
     const winCase = [ 
       [0, 1, 2], [3, 4, 5], [6, 7, 8],
@@ -23,6 +25,7 @@ export const Tictactoe = () => {
 
 
     function restartGame() {
+      setGameFinished(false);
       setIsStarted(1);
     }
 

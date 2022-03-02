@@ -8,6 +8,8 @@ export const Tictactoe = () => {
     const [isStarted, setIsStarted] = useState(0);
     //propiedad para terminar la partida
     const [isGameFinished, setGameFinished] = useState(false);
+    //tablero de celdas en el que se jugará
+    const [cellBoard, setCellBoard] = useState([]);
 
     const winCase = [ 
       [0, 1, 2], [3, 4, 5], [6, 7, 8],

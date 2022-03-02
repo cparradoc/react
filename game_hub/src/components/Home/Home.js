@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Home.css'
 
 export const Home = () => {
@@ -7,19 +7,11 @@ export const Home = () => {
     <div>
         <h1>Welcome to Game Hub!</h1>
         <h2>Juegos:</h2>
-        <div class ="nav">
-            <a>
-                <Link to="/counter">Go to counter</Link>
-            </a>
-            <a>
-                <Link to="/tictactoe">Go to Tictactoe</Link>
-            </a>
-            <a>
-                <Link to="/hangman">Go to Hangman</Link>
-            </a>
-            <a>
-                <Link to="/sudoku">Go to Sudoku</Link>
-            </a>
+        <div className ="nav">
+            <Link to="/counter">Go to counter</Link>
+            <Link to="/tictactoe">Go to Tictactoe</Link>
+            <Link to="/hangman">Go to Hangman</Link>
+            <Link to="/sudoku">Go to Sudoku</Link>
         </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-import './Tictactoe.css'
+import Grid from '@material-ui/core/Grid';
+import './Tictactoe.css';
 
 export const Tictactoe = () => {
 
@@ -55,6 +56,7 @@ export const Tictactoe = () => {
         ) : (
           <h2>Es el turno de O</h2>
         )}
+        <Grid container></Grid>
       </div>
     );
   };

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+// Importamos las acciones y selectores del slice.
 import {
   decrement,
   increment,
@@ -11,8 +13,12 @@ import {
 import styles from './Counter.module.css';
 
 export function Counter() {
+  // Con useSelector gestionaremos de forma automática los selectores.
   const count = useSelector(selectCount);
+  // Usaremos dispatch para lanzar acciones que activan reducers.
+  // dispatch invocará dentro a una action enviando payload si fuese necesario.
   const dispatch = useDispatch();
+  // Definimos un state local que inicie el incremento en el número que queramos
   const [incrementAmount, setIncrementAmount] = useState('2');
 
   const incrementValue = Number(incrementAmount) || 0;
@@ -45,7 +51,9 @@ export function Counter() {
         />
         <button
           className={styles.button}
-          onClick={() => dispatch(incrementByAmount(incrementValue))}
+          // Cada vez que pulsemos el botón, lanzamos el dispatch con la
+          // cantidad que tenga el state local del componente
+          onClick={() => dispatch(incrementByAmount(Number(incrementValue) || 0))}
         >
           Add Amount
         </button>

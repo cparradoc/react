@@ -45,7 +45,11 @@ export const Tictactoe = () => {
     return (
       <div>
         <h1>Tictactoe</h1>
+        {isStarted? (
+        <button className="start" onClick={restartGame}>Restart Game</button>
+        ) : (
         <button className="start" onClick={restartGame}>Start Game</button>
+        )}
         {turnOX ? (
           <h2>Es el turno de X</h2>
         ) : (

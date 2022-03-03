@@ -10,7 +10,8 @@ export const Hangman = () => {
   const [hint, setHint] = (""); //pista
   const numberOfTries = 6;
   const [nTry, setNTry] = useState(0);
-  const wordList = ["patata", "herbivoro", "onomatopeya", "lmao", "raticate"];
+  const wordList = ["patata", "herbivoro", "onomatopeya", "lmao", "raticate", "lombriz", "tractor",
+"wordle", "goiko"];
 
   
 
@@ -35,6 +36,10 @@ export const Hangman = () => {
 
   }
 
+  const handleFormSubmit = (e) => {
+    e.preventDefautl();
+  }
+
 
     return (
       <div>
@@ -45,6 +50,10 @@ export const Hangman = () => {
         <h2>Número de intentos restantes: {numberOfTries - nTry}</h2>
         <h1>{cifredWord}</h1>
         <h1>{word}</h1>
+
+        <form onSubmit={handleFormSubmit}>
+
+        </form>
       </div>
     );
   };

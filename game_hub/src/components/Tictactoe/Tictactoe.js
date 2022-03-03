@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from "react";
+import { withAlert } from 'react-alert';
 import Grid from '@material-ui/core/Grid';
 import './Tictactoe.css';
 
@@ -81,10 +82,12 @@ export const Tictactoe = () => {
       console.log(thirdElement);
       if(firstElement != null && secondElement != null && thirdElement != null) {
         if(turnOX){
-          console.log("Ha ganado O");
+          alert("Ha ganado X");
+          restartGame();
         }
         else {
-          console.log("Ha ganado X");
+          alert("Ha ganado O");
+          restartGame();
         }
         setGameFinished(true);
       }

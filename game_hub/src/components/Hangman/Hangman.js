@@ -6,38 +6,46 @@ export const Hangman = () => {
 
   const [word, setWord] = useState(""); //palabra
   const [letter, setLetter] = useState(""); //letra
+  const [hint, setHint] = useState(""); //pista
   const [cifredWord, setCifredWord] = useState("");
-  const [hint, setHint] = (""); //pista
   const numberOfTries = 6;
   const [nTry, setNTry] = useState(0);
   const wordList = ["patata", "herbivoro", "onomatopeya", "lmao", "raticate", "lombriz", "tractor",
 "wordle", "goiko"];
 
   
-
-  const [restart, setRestart] = useState(false);
+  const [restart, setRestart] = useState(0);
 
   useEffect(() => {
-    setRestart(false);
+    setRestart(0);
     const tempWord = wordList[Math.floor(Math.random() * wordList.length)];
     setWord(tempWord);
 
     let bars = [];
     for(let i = 0; i < tempWord.length; i++){
-      bars += "_ ";
+      bars += "_";
     }
-    setCifredWord(bars);
+    setHint(bars);
 
   },[restart]);
 
   function restartGame() {
     setNTry(0);
-    setRestart(true);
+    setRestart(1);
 
   }
 
   const handleFormSubmit = (e) => {
-    e.preventDefautl();
+    e.preventDefault();
+    if (word.includes(letter)) {
+      let updatedHint = [...hint];
+      for ( let i = 0; i < word.length; i++) {
+        if ( word[i] == letter) {
+          updatedHint[i] = letter;
+        }
+      }
+      setHint(updatedHint);
+    }
   }
 
 
@@ -48,13 +56,14 @@ export const Hangman = () => {
 
         <button onClick={restartGame}>Restart game</button>
         <h2>Número de intentos restantes: {numberOfTries - nTry}</h2>
-        <h1>{cifredWord}</h1>
+        <h1>{hint}</h1>
         <h1>{word}</h1>
 
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit} value={letter}>
           <input maxLength= "1" onChange={e => {
-            if (e.target.value.length == 1) setLetter(e.target.value.toLowerCase());
+            setLetter(e.target.value.toLowerCase());
           }}></input>
+          <button type="submit" value="Submit" variant="contained">Comprobar</button>
         </form>
         <p>{letter}</p>
       </div>

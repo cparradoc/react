@@ -44,6 +44,7 @@ export const Hangman = () => {
         }
       }
       setHint(updatedHint);
+      checkWin();
     }else if(!word.includes(letter)) {
       setNTry(nTry + 1);
       if(nTry == 5) {
@@ -51,11 +52,23 @@ export const Hangman = () => {
         restartGame();
       }
     }
+  }
 
+  const checkWin = () => {
+    let hasWin = true;
+    for (let i = 0; i < hint.length;i++) {
+      if (hint[i] == "_") {
+        hasWin = false;
+      }
+    }
+    if (hasWin) {
+      alert("!Enhorabuena! La palabra era " + word);
+      restartGame();
+    }
   }
 
 
-    return (
+  return (
       <div>
       <Link to="/">Go back to main game hub menu</Link>
         <h1>Hangman</h1>

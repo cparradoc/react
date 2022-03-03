@@ -6,6 +6,7 @@ export const Hangman = () => {
 
   const [word, setWord] = useState(""); //palabra
   const [letter, setLetter] = useState(""); //letra
+  const [cifredWord, setCifredWord] = useState("");
   const [hint, setHint] = (""); //pista
   const numberOfTries = 6;
   const [nTry, setNTry] = useState(0);
@@ -19,6 +20,12 @@ export const Hangman = () => {
     setRestart(false);
     const tempWord = wordList[Math.floor(Math.random() * wordList.length)];
     setWord(tempWord);
+
+    let bars = [];
+    for(let i = 0; i < tempWord.length; i++){
+      bars += "_ ";
+    }
+    setCifredWord(bars);
 
   },[restart]);
 
@@ -36,6 +43,7 @@ export const Hangman = () => {
 
         <button onClick={restartGame}>Restart game</button>
         <h2>Número de intentos restantes: {numberOfTries - nTry}</h2>
+        <h1>{cifredWord}</h1>
         <h1>{word}</h1>
       </div>
     );

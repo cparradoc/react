@@ -18,7 +18,9 @@ export const Hangman = () => {
   },[restart]);
 
   function restartGame() {
+    setNTry(0);
     setRestart(false);
+
   }
 
 
@@ -28,7 +30,7 @@ export const Hangman = () => {
         <h1>Hangman</h1>
 
         <button onClick={restartGame}>Restart game</button>
-        
+        <h2>Número de intentos restantes: {numberOfTries - nTry}</h2>
       </div>
     );
   };

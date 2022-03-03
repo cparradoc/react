@@ -44,7 +44,17 @@ export const Hangman = () => {
         }
       }
       setHint(updatedHint);
-      checkWin();
+      let hasWin = true;
+      for (let i = 0; i < updatedHint.length;i++) {
+        if (updatedHint[i] == "_") {
+          hasWin = false;
+        }
+      }
+      console.log(updatedHint);
+      if (hasWin) {
+        alert("!Enhorabuena! La palabra era " + word);
+        restartGame();
+      }
     }else if(!word.includes(letter)) {
       setNTry(nTry + 1);
       if(nTry == 5) {
@@ -53,20 +63,6 @@ export const Hangman = () => {
       }
     }
   }
-
-  const checkWin = () => {
-    let hasWin = true;
-    for (let i = 0; i < hint.length;i++) {
-      if (hint[i] == "_") {
-        hasWin = false;
-      }
-    }
-    if (hasWin) {
-      alert("!Enhorabuena! La palabra era " + word);
-      restartGame();
-    }
-  }
-
 
   return (
       <div>

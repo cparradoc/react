@@ -45,9 +45,10 @@ export const Hangman = () => {
       }
       setHint(updatedHint);
     }else if(!word.includes(letter)) {
-      let newNTry = nTry + 1;
       setNTry(nTry + 1);
-      console.log(nTry);
+      if(nTry == 6) {
+        restartGame();
+      }
     }
 
   }

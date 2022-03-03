@@ -11,12 +11,14 @@ export const Hangman = () => {
   const [nTry, setNTry] = useState(0);
   const wordList = ["patata", "herbivoro", "onomatopeya", "lmao", "raticate"];
 
+  const [restart, setRestart] = useState(false);
+
   useEffect(() => {
 
-  },[]);
+  },[restart]);
 
   function restartGame() {
-
+    setRestart(false);
   }
 
 

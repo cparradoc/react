@@ -26,6 +26,36 @@ export const Tictactoe = () => {
     restartGame();
   }, [isGameFinished]);
 
+    //caso en el que un jugador gane
+    const checkWin = () =>{
+      setGameFinished(true); //el tablero está lleno hasta que no se demuestre que hay alguna celda vacía
+      for (let index in winCase) {
+        let firstElement = cellBoard[winCase[index][0]].value;
+        let secondElement = cellBoard[winCase[index][1]].value;
+        let thirdElement = cellBoard[winCase[index][2]].value;
+  
+        if(firstElement == null || secondElement == null || thirdElement == null) {
+          setGameFinished(false);
+        }
+      }
+      for (let index in winCase) {
+        let firstElement = cellBoard[winCase[index][0]].value;
+        let secondElement = cellBoard[winCase[index][1]].value;
+        let thirdElement = cellBoard[winCase[index][2]].value;
+        
+        if(firstElement != null && secondElement == firstElement && thirdElement == secondElement) {
+          if(turnOX){
+            alert("Ha ganado O");
+            setGameFinished(true);
+          }
+          else {
+            alert("Ha ganado X");
+            setGameFinished(true);
+          }
+        }
+      }
+        
+    }
 
   function changePlayer() {
     if(turnOX) {
@@ -35,18 +65,18 @@ export const Tictactoe = () => {
     }
   }
 
-  function restartGame() {
-    setGameFinished(false);
-    setIsStarted(1);
-    initializeBoard();
-  }
-
   function initializeBoard() {
     setCellBoard([
       [null], [null], [null],
       [null], [null], [null],
       [null], [null], [null],
     ]);
+  }
+
+  function restartGame() {
+    setGameFinished(false);
+    setIsStarted(1);
+    initializeBoard();
   }
 
   //actualización de una celda tras hacer click sobre ella
@@ -60,39 +90,12 @@ export const Tictactoe = () => {
         newCellBoard[index] = {...newCellBoard[index], value: 'O'};
       }
       setCellBoard(newCellBoard);
-      checkWin();
       changePlayer();
+      checkWin();
     }
   }
 
-  //caso en el que un jugador gane
-  const checkWin =() =>{
-    setGameFinished(true); //el tablero está lleno hasta que no se demuestre que hay alguna celda vacía
-    for (let index in winCase) {
-      let firstElement = cellBoard[winCase[index][0]].value;
-      let secondElement = cellBoard[winCase[index][1]].value;
-      let thirdElement = cellBoard[winCase[index][2]].value;
 
-      if(firstElement == null || secondElement == null || thirdElement == null) {
-        setGameFinished(false);
-      }
-    }
-    for (let index in winCase) {
-      let firstElement = cellBoard[winCase[index][0]].value;
-      let secondElement = cellBoard[winCase[index][1]].value;
-      let thirdElement = cellBoard[winCase[index][2]].value;
-      
-      if(firstElement != null && secondElement == firstElement && thirdElement == secondElement) {
-        if(turnOX){
-          alert("Ha ganado O");
-        }
-        else {
-          alert("Ha ganado X");
-        }
-      }
-    }
-      
-  }
 
   return (
     <div>

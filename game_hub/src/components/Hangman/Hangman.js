@@ -16,7 +16,7 @@ export const Hangman = () => {
   const [restart, setRestart] = useState(false);
 
   useEffect(() => {
-    restartGame();
+    setRestart(false);
     const tempWord = wordList[Math.floor(Math.random() * wordList.length)];
     setWord(tempWord);
 
@@ -24,7 +24,7 @@ export const Hangman = () => {
 
   function restartGame() {
     setNTry(0);
-    setRestart(false);
+    setRestart(true);
 
   }
 

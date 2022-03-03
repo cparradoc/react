@@ -52,8 +52,11 @@ export const Hangman = () => {
         <h1>{word}</h1>
 
         <form onSubmit={handleFormSubmit}>
-
+          <input maxLength= "1" onChange={e => {
+            if (e.target.value.length == 1) setLetter(e.target.value.toLowerCase());
+          }}></input>
         </form>
+        <p>{letter}</p>
       </div>
     );
   };

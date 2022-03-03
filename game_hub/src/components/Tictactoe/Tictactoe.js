@@ -13,6 +13,9 @@ export const Tictactoe = () => {
   const [cellBoard, setCellBoard] = useState([]);
   //propiedad para determinar de quién es el turno, 0 turno de O y 1 turno de X
   const [turnOX, setTurnOX] = useState(0);
+  //propiedad para determinar que el juego se ha terminado
+  const [isGameOver, setGameOver] = useState(false);
+
 
   const winCase = [ 
     [0, 1, 2], [3, 4, 5], [6, 7, 8],

@@ -11,11 +11,21 @@ export const Hangman = () => {
   const [nTry, setNTry] = useState(0);
 
 
+  useEffect(() => {
+
+  },[]);
+
+  function restartGame() {
+
+  }
+
+
     return (
       <div>
       <Link to="/">Go back to main game hub menu</Link>
         <h1>Hangman</h1>
 
+        <button onClick={restartGame}>Restart game</button>
         
       </div>
     );

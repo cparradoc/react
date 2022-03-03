@@ -86,6 +86,7 @@ export const Tictactoe = () => {
         else {
           console.log("Ha ganado X");
         }
+        setGameFinished(true);
       }
     }
       

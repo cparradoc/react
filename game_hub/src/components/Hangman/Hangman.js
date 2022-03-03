@@ -9,7 +9,7 @@ export const Hangman = () => {
   const [hint, setHint] = (""); //pista
   const numberOfTries = 6;
   const [nTry, setNTry] = useState(0);
-
+  const wordList = ["patata", "herbivoro", "onomatopeya", "lmao", "raticate"];
 
   useEffect(() => {
 

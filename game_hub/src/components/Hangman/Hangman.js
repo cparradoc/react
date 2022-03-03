@@ -7,7 +7,6 @@ export const Hangman = () => {
   const [word, setWord] = useState(""); //palabra
   const [letter, setLetter] = useState(""); //letra
   const [hint, setHint] = useState(""); //pista
-  const [cifredWord, setCifredWord] = useState("");
   const numberOfTries = 6;
   const [nTry, setNTry] = useState(0);
   const wordList = ["patata", "herbivoro", "onomatopeya", "lmao", "raticate", "lombriz", "tractor",
@@ -45,7 +44,12 @@ export const Hangman = () => {
         }
       }
       setHint(updatedHint);
+    }else if(!word.includes(letter)) {
+      let newNTry = nTry + 1;
+      setNTry(nTry + 1);
+      console.log(nTry);
     }
+
   }
 
 

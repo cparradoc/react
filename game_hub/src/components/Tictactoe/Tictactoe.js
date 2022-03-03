@@ -1,6 +1,5 @@
 import React from 'react';
 import { useEffect, useState } from "react";
-import { withAlert } from 'react-alert';
 import Grid from '@material-ui/core/Grid';
 import './Tictactoe.css';
 
@@ -14,8 +13,7 @@ export const Tictactoe = () => {
   const [cellBoard, setCellBoard] = useState([]);
   //propiedad para determinar de quién es el turno, 0 turno de O y 1 turno de X
   const [turnOX, setTurnOX] = useState(0);
-  //propiedad para determinar que el juego se ha terminado
-  const [isGameOver, setGameOver] = useState(false);
+
 
 
   const winCase = [ 
@@ -25,12 +23,8 @@ export const Tictactoe = () => {
   ];
 
   useEffect(() => {
-    if(!isStarted) {
-      console.log("Partida comenzada!");
-    } else {
-      console.log("Partida reiniciada!");
-    }
-  }, [isStarted]);
+    restartGame();
+  }, [isGameFinished]);
 
 
   function changePlayer() {
@@ -73,31 +67,31 @@ export const Tictactoe = () => {
 
   //caso en el que un jugador gane
   const checkWin =() =>{
+    setGameFinished(true); //el tablero está lleno hasta que no se demuestre que hay alguna celda vacía
     for (let index in winCase) {
       let firstElement = cellBoard[winCase[index][0]].value;
       let secondElement = cellBoard[winCase[index][1]].value;
       let thirdElement = cellBoard[winCase[index][2]].value;
-      console.log(firstElement);
-      console.log(secondElement);
-      console.log(thirdElement);
-      if(firstElement != null && secondElement != null && thirdElement != null) {
+
+      if(firstElement == null || secondElement == null || thirdElement == null) {
+        setGameFinished(false);
+      }
+    }
+    for (let index in winCase) {
+      let firstElement = cellBoard[winCase[index][0]].value;
+      let secondElement = cellBoard[winCase[index][1]].value;
+      let thirdElement = cellBoard[winCase[index][2]].value;
+      
+      if(firstElement != null && secondElement == firstElement && thirdElement == secondElement) {
         if(turnOX){
-          alert("Ha ganado X");
-          restartGame();
+          alert("Ha ganado O");
         }
         else {
-          alert("Ha ganado O");
-          restartGame();
+          alert("Ha ganado X");
         }
-        setGameFinished(true);
       }
     }
       
-  }
-
-  //caso de empate
-  function checkEndGame() {
-
   }
 
   return (

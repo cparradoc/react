@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import './Tictactoe.css';
 
@@ -99,7 +100,9 @@ export const Tictactoe = () => {
 
   return (
     <div>
+      <Link to="/">Go back to main game hub menu</Link>
       <h1>Tictactoe</h1>
+      
       {isStarted? (
       <button className="start" onClick={restartGame}>Restart Game</button>
       ) : (

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useEffect } from "react";
 
 export const Hangman = () => {
@@ -12,7 +13,10 @@ export const Hangman = () => {
 
     return (
       <div>
+      <Link to="/">Go back to main game hub menu</Link>
         <h1>Hangman</h1>
+
+        
       </div>
     );
   };

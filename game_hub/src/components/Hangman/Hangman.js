@@ -11,9 +11,14 @@ export const Hangman = () => {
   const [nTry, setNTry] = useState(0);
   const wordList = ["patata", "herbivoro", "onomatopeya", "lmao", "raticate"];
 
+  
+
   const [restart, setRestart] = useState(false);
 
   useEffect(() => {
+    restartGame();
+    const tempWord = wordList[Math.floor(Math.random() * wordList.length)];
+    setWord(tempWord);
 
   },[restart]);
 
@@ -31,6 +36,7 @@ export const Hangman = () => {
 
         <button onClick={restartGame}>Restart game</button>
         <h2>Número de intentos restantes: {numberOfTries - nTry}</h2>
+        <h1>{word}</h1>
       </div>
     );
   };

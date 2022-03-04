@@ -13,6 +13,7 @@ export const Sudoku = () => {
 
   useEffect (() => {
     const newBoard = makepuzzle();
+    console.log(newBoard);
     setSudokuDone(solvepuzzle(newBoard));
     
     for (let i = 0; i < newBoard.length; i++) {
@@ -22,6 +23,7 @@ export const Sudoku = () => {
     }
 
     setCellBoard(newBoard);
+    isSudokuRendered(true);
 
   }, [renderSudoku]);
 
@@ -32,9 +34,9 @@ export const Sudoku = () => {
   const CreateBoard = () => {
     if (isSudokuRendered){
       let board = [];
-      /*for (let i = 0; i < cellBoard.length; i++) {
+      for (let i = 0; i < cellBoard.length; i++) {
 
-      }*/
+      }
 
       return <Grid>{board}</Grid>
     } else {

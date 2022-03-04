@@ -9,6 +9,7 @@ export const Sudoku = () => {
   const [cellBoard, setCellBoard] = useState(null);
   const [sudokuDone, setSudokuDone] = useState(false);
   const [renderSudoku, setRenderSudoku] = useState(0);
+  const [sudokuRendered, isSudokuRendered] = useState(false);
 
   useEffect (() => {
     const newBoard = makepuzzle();
@@ -29,12 +30,17 @@ export const Sudoku = () => {
   };
 
   const CreateBoard = () => {
-    let board = [];
-    for (let i = 0; i < cellBoard.length; i++) {
+    if (isSudokuRendered){
+      let board = [];
+      /*for (let i = 0; i < cellBoard.length; i++) {
 
+      }*/
+
+      return <Grid>{board}</Grid>
+    } else {
+      return <h1> Un segundo, aun no está listo su Sudoku</h1>
     }
-
-    return <Grid>{board}</Grid>
+    
 
 
   };

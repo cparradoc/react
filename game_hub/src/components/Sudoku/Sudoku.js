@@ -26,14 +26,20 @@ export const Sudoku = () => {
 
   };
 
-  const CreateBoard = () => {
-  }
+  const createBoard = () => {
+    
+  };
+
+  const restartGame = () => {
+
+  };
 
 
   return (
     <div>
     <Link to="/">Go back to main game hub menu</Link>
       <h1>Sudoku</h1>
+        <button onClick={restartGame}>Restart game</button>
       <form onSubmit={handleFormSubmit}>
 
       </form>

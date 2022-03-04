@@ -57,6 +57,7 @@ export const Sudoku = () => {
         <button onClick={restartGame}>Restart game</button>
       <form onSubmit={handleFormSubmit}>
         <CreateBoard></CreateBoard>
+        <button type="submit" value="Submit">Comprobar</button>
       </form>
     </div>
   );

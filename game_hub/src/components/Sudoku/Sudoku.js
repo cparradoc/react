@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { makepuzzle, solvepuzzle } from "sudoku";
 
 export const Sudoku = () => {
 
-  const [cellBoard, setCellBoard] = useTtate(null);
+  const [cellBoard, setCellBoard] = useState(null);
 
   useEffect (() => {
 

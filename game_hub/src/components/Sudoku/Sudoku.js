@@ -28,7 +28,7 @@ export const Sudoku = () => {
 
   };
 
-  const createBoard = () => {
+  const CreateBoard = () => {
     let board = [];
     for (let i = 0; i < cellBoard.length; i++) {
 
@@ -50,7 +50,7 @@ export const Sudoku = () => {
       <h1>Sudoku</h1>
         <button onClick={restartGame}>Restart game</button>
       <form onSubmit={handleFormSubmit}>
-        <createBoard></createBoard>
+        <CreateBoard></CreateBoard>
       </form>
     </div>
   );

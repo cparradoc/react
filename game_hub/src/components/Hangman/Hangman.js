@@ -72,7 +72,6 @@ export const Hangman = () => {
         <button onClick={restartGame}>Restart game</button>
         <h2>Número de intentos restantes: {numberOfTries - nTry}</h2>
         <h1>{hint}</h1>
-        <h1>{word}</h1>
 
         <form onSubmit={handleFormSubmit} value={letter}>
           <input maxLength= "1" onChange={e => {

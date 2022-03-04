@@ -28,7 +28,7 @@ export const Tictactoe = () => {
   }, [isGameFinished]);
 
     //caso en el que un jugador gane
-    const checkWin = () =>{
+    const checkWin = cellBoard =>{
       setGameFinished(true); //el tablero está lleno hasta que no se demuestre que hay alguna celda vacía
       for (let index in winCase) {
         let firstElement = cellBoard[winCase[index][0]].value;
@@ -46,11 +46,11 @@ export const Tictactoe = () => {
         
         if(firstElement != null && secondElement == firstElement && thirdElement == secondElement) {
           if(turnOX){
-            alert("Ha ganado O");
+            alert("Ha ganado X");
             setGameFinished(true);
           }
           else {
-            alert("Ha ganado X");
+            alert("Ha ganado O");
             setGameFinished(true);
           }
         }
@@ -92,7 +92,7 @@ export const Tictactoe = () => {
       }
       setCellBoard(newCellBoard);
       changePlayer();
-      checkWin();
+      checkWin(newCellBoard);
     }
   }
 

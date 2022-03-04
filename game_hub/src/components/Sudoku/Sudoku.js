@@ -11,6 +11,15 @@ export const Sudoku = () => {
   useEffect (() => {
     const newBoard = makepuzzle();
     setSudokuDone(solvepuzzle(newBoard));
+    
+    for (let i = 0; i < newBoard.length; i++) {
+      if (newBoard[i] === null) {
+        newBoard[i] = '';
+      }
+    }
+
+    setCellBoard(newBoard);
+
   });
 
   const handleFormSubmit = e => {
@@ -18,7 +27,6 @@ export const Sudoku = () => {
   };
 
   const CreateBoard = () => {
-
   }
 
 

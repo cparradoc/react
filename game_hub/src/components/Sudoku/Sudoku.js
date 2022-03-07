@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { makepuzzle, solvepuzzle } from "sudoku";
 import Grid from '@material-ui/core/Grid';
+import './Sudoku.css';
 
 export const Sudoku = () => {
 
@@ -14,6 +15,7 @@ export const Sudoku = () => {
   useEffect (() => {
     const newBoard = makepuzzle();
     setSudokuDone(solvepuzzle(newBoard));
+    console.log(newBoard);
     
     for (let i = 0; i < newBoard.length; i++) {
       if (newBoard[i] === null) {
@@ -44,22 +46,39 @@ export const Sudoku = () => {
       for (let i = 0, j = 0; i < cellBoard.length; i++, j++) {
         if (j >= nRows) {
           j = 0;
-          board.push(<Grid xs={9}>{row}</Grid>)
+          board.push(<Grid container className="row" key={j+i} spacing={9}>{row}</Grid>)
+          row = [];
         }
 
         if (cellBoard[i] != '') {
           row.push(
-            <Grid key={i} item xs={Math.floor(12/nRows)}>
-              <input type="text" value={cellBoard[i]} disabled='disabled'/>
+            <Grid className="row" key={i} item xs={Math.floor(12/nRows)}>
+              <input type="text" style={{width: "50px", height: "50px"}} value={cellBoard[i]} disabled='disabled'/>
             </Grid>
           );
+        }
+        else {
+          row.push(
+          <Grid key={i} className="row" item xs={Math.floor(12/nRows)}>
+            <input  type="text" value={cellBoard[i]} onChange={e => {
+              let value = e.target.value;
+              let tempBoard = [...cellBoard];
+              if (value.length == 1) {
+                if (Number.isNaN(parseInt(value))) {
+                  tempBoard[i] = ""
+                }else {
+                  tempBoard[i] = parseInt(value);
+                }
+                setCellBoard(tempBoard);
+              }
+            }} style={{width: "50px", height: "50px"}}></input>
+          </Grid>);
         }
       }
 
       return <Grid>{board}</Grid>
-    } else {
-      return <h1> Un segundo, aun no está listo su Sudoku</h1>
     }
+    return <h1> Un segundo, aun no está listo su Sudoku</h1>
     
 
 

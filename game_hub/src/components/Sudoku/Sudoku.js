@@ -28,7 +28,14 @@ export const Sudoku = () => {
   }, [renderSudoku]);
 
   const handleFormSubmit = e => {
+    e.preventDefault();
 
+    if(cellBoard === sudokuDone) {
+      alert("¡Enhorabuena, has completado el sudoku!");
+      setRenderSudoku(1);
+    } else {
+      alert("¡Oh no, me temo que este no es el resultado correcto!");
+    }
   };
 
   const CreateBoard = () => {

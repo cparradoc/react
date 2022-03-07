@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { makepuzzle, solvepuzzle } from "sudoku";
 import Grid from '@material-ui/core/Grid';
-import {Alert, Button} from 'react-native';
 import './Sudoku.css';
 
 export const Sudoku = () => {
@@ -56,7 +55,7 @@ export const Sudoku = () => {
   };
 
   const CreateBoard = () => {
-    if (sudokuRendered == true){
+    if (sudokuRendered === true){
       let board = [];
       let row = [];
       let nRows = Math.sqrt(cellBoard.length);

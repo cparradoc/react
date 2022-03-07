@@ -13,7 +13,6 @@ export const Sudoku = () => {
 
   useEffect (() => {
     const newBoard = makepuzzle();
-    console.log(newBoard);
     setSudokuDone(solvepuzzle(newBoard));
     
     for (let i = 0; i < newBoard.length; i++) {
@@ -31,7 +30,7 @@ export const Sudoku = () => {
 
     if(cellBoard === sudokuDone) {
       alert("¡Enhorabuena, has completado el sudoku!");
-      setRenderSudoku(1);
+      setRenderSudoku(!renderSudoku);
     } else {
       alert("¡Oh no, me temo que este no es el resultado correcto!");
       //aqui opciones de seguir o de ver la solución y terminar partida
@@ -44,8 +43,11 @@ export const Sudoku = () => {
       let row = [];
       let nRows = Math.sqrt(cellBoard.length);
       for (let i = 0; i < cellBoard.length; i++) {
-        board.push(<Grid xs={9}>{row}</Grid>)
+        if (i < nRows) {
+          board.push(<Grid xs={9}>{row}</Grid>)
+        }
       }
+      console.log(board);
 
       return <Grid>{board}</Grid>
     } else {

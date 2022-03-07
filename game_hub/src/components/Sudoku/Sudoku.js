@@ -84,7 +84,7 @@ export const Sudoku = () => {
   };
 
   const restartGame = () => {
-
+    setRenderSudoku(!renderSudoku);
   };
 
 

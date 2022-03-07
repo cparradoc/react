@@ -35,6 +35,7 @@ export const Sudoku = () => {
       setRenderSudoku(1);
     } else {
       alert("¡Oh no, me temo que este no es el resultado correcto!");
+      //aqui opciones de seguir o de ver la solución y terminar partida
     }
   };
 

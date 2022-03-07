@@ -24,7 +24,6 @@ export const Sudoku = () => {
 
     setCellBoard(newBoard);
     isSudokuRendered(true);
-
   }, [renderSudoku]);
 
   const handleFormSubmit = e => {
@@ -40,10 +39,12 @@ export const Sudoku = () => {
   };
 
   const CreateBoard = () => {
-    if (isSudokuRendered){
+    if (isSudokuRendered === true){
       let board = [];
+      let row = [];
+      let nRows = Math.sqrt(cellBoard.length);
       for (let i = 0; i < cellBoard.length; i++) {
-
+        board.push(<Grid xs={9}>{row}</Grid>)
       }
 
       return <Grid>{board}</Grid>

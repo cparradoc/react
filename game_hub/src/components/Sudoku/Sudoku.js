@@ -9,10 +9,15 @@ import './Sudoku.css';
 export const Sudoku = () => {
 
   const [cellBoard, setCellBoard] = useState(null);
-  const [sudokuDone, setSudokuDone] = useState(false);
+  const [sudokuDone, setSudokuDone] = useState(null);
   const [renderSudoku, setRenderSudoku] = useState(0);
   const [sudokuRendered, isSudokuRendered] = useState(false);
   const [wrongSudoku, isWrongsudoku] = useState(false);
+
+  const [redo, setRedo] = useState(false);
+  const [backupSudoku, setBackupSudoku] = useState(null);
+  const [backupDone, setBackupDone] = useState(null);
+
 
   useEffect (() => {
     const newBoard = makepuzzle();
@@ -23,12 +28,22 @@ export const Sudoku = () => {
         newBoard[i] = '';
       }
     }
-    setCellBoard(newBoard);
+
+    if (redo) {
+      console.log(backupSudoku);
+      setCellBoard(backupSudoku);
+      setSudokuDone(backupDone);
+    }
+    else {
+      setCellBoard(newBoard);
+    }
     isSudokuRendered(true);
   }, [renderSudoku]);
 
   const handleFormSubmit = e => {
     e.preventDefault();
+    setBackupSudoku(cellBoard);
+    setBackupDone(sudokuDone);
 
     if(cellBoard === sudokuDone) {
       alert("¡Enhorabuena, has completado el sudoku!");
@@ -42,7 +57,7 @@ export const Sudoku = () => {
   };
 
   const CreateBoard = () => {
-    if (sudokuRendered === true){
+    if (sudokuRendered == true){
       let board = [];
       let row = [];
       let nRows = Math.sqrt(cellBoard.length);
@@ -89,11 +104,18 @@ export const Sudoku = () => {
 
   const restartGame = () => {
     isWrongsudoku(false);
+    setRedo(false);
     setRenderSudoku(!renderSudoku);
   };
 
   const showSolution = () => {
-    alert(sudokuDone);
+    alert(backupDone);
+    restartGame();
+  }
+
+  const keepPlaying = () => {
+    setRedo(true);
+    console.log(backupSudoku);
     isWrongsudoku(false);
     setRenderSudoku(!renderSudoku);
   }
@@ -107,6 +129,7 @@ export const Sudoku = () => {
       {wrongSudoku? (
         <div>
           <button onClick={showSolution} style={{margin: "20px"}}>Ver solución</button>
+          <button onClick={keepPlaying} style={{margin: "20px"}}>Seguir intentándolo</button>
         </div>
       ) : (
         <form onSubmit={handleFormSubmit}>

@@ -28,9 +28,9 @@ export const Sudoku = () => {
         newBoard[i] = '';
       }
     }
+    console.log(sudokuDone);
 
     if (redo) {
-      console.log(backupSudoku);
       setCellBoard(backupSudoku);
       setSudokuDone(backupDone);
     }
@@ -45,9 +45,14 @@ export const Sudoku = () => {
     setBackupSudoku(cellBoard);
     setBackupDone(sudokuDone);
 
-    if(cellBoard === sudokuDone) {
+    console.log(backupDone);
+    console.log(backupSudoku);
+    console.log(sudokuDone);
+    console.log(cellBoard);
+    if(cellBoard.toString() === sudokuDone.toString()) {
       alert("¡Enhorabuena, has completado el sudoku!");
       setRenderSudoku(!renderSudoku);
+      restartGame();
     } else {
       alert('¡Oh no, me temo que este no es el resultado correcto!');
       isWrongsudoku(true);
@@ -57,6 +62,8 @@ export const Sudoku = () => {
   };
 
   const CreateBoard = () => {
+    console.log(sudokuDone);
+    console.log(cellBoard);
     if (sudokuRendered == true){
       let board = [];
       let row = [];
@@ -115,7 +122,6 @@ export const Sudoku = () => {
 
   const keepPlaying = () => {
     setRedo(true);
-    console.log(backupSudoku);
     isWrongsudoku(false);
     setRenderSudoku(!renderSudoku);
   }

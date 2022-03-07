@@ -35,7 +35,7 @@ export const Tictactoe = () => {
         let secondElement = cellBoard[winCase[index][1]].value;
         let thirdElement = cellBoard[winCase[index][2]].value;
   
-        if(firstElement === null || secondElement === null || thirdElement === null) {
+        if(firstElement == null || secondElement == null || thirdElement == null) {
           setGameFinished(false);
         }
       }
@@ -82,7 +82,7 @@ export const Tictactoe = () => {
 
   //actualización de una celda tras hacer click sobre ella
   const updateCellValue = index => e => {
-    if(cellBoard[index].value === null && isStarted){
+    if(cellBoard[index].value == null && isStarted){
       let newCellBoard = [...cellBoard];
       if (turnOX) {
         newCellBoard[index] = {...newCellBoard[index], value: 'X'};

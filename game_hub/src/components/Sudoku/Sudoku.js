@@ -45,14 +45,14 @@ export const Sudoku = () => {
       for (let i = 0, j = 0; i <= cellBoard.length; i++, j++) {
         if (j >= nRows) {
           j = 0;
-          board.push(<Grid container className="row" key={j+i} spacing={9}>{row}</Grid>)
+          board.push(<Grid container className="row" key={j+i} spacing={6}>{row}</Grid>)
           row = [];
         }
 
         if (cellBoard[i] !== '') {
           row.push(
             <Grid className="row" key={i} item xs={Math.floor(12/nRows)}>
-              <input type="text" style={{width: "50px", height: "50px"}} value={cellBoard[i]} disabled='disabled'/>
+              <input type="text" style={{width: "50px", height: "50px", textAlign: "center"}} value={cellBoard[i]} disabled='disabled'/>
             </Grid>
           );
         }
@@ -70,7 +70,7 @@ export const Sudoku = () => {
                 }
                 setCellBoard(tempBoard);
               }
-            }} style={{width: "50px", height: "50px"}}></input>
+            }} style={{width: "50px", height: "50px", textAlign: "center"}}></input>
           </Grid>);
         }
       }

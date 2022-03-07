@@ -14,7 +14,6 @@ export const Sudoku = () => {
   useEffect (() => {
     const newBoard = makepuzzle();
     setSudokuDone(solvepuzzle(newBoard));
-    console.log("jeje");
     
     for (let i = 0; i < newBoard.length; i++) {
       if (newBoard[i] === null) {
@@ -23,7 +22,6 @@ export const Sudoku = () => {
     }
     setCellBoard(newBoard);
     isSudokuRendered(true);
-    console.log(sudokuRendered);
   }, [renderSudoku]);
 
   const handleFormSubmit = e => {
@@ -39,9 +37,7 @@ export const Sudoku = () => {
   };
 
   const CreateBoard = () => {
-    console.log(sudokuRendered);
     if (sudokuRendered === true){
-      console.log("no mames");
       let board = [];
       let row = [];
       let nRows = Math.sqrt(cellBoard.length);

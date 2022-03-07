@@ -47,7 +47,6 @@ export const Sudoku = () => {
           board.push(<Grid xs={9}>{row}</Grid>)
         }
       }
-      console.log(board);
 
       return <Grid>{board}</Grid>
     } else {

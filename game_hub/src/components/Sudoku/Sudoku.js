@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { makepuzzle, solvepuzzle } from "sudoku";
 import Grid from '@material-ui/core/Grid';
+import {Alert, Button} from 'react-native';
 import './Sudoku.css';
 
 export const Sudoku = () => {
@@ -11,6 +12,7 @@ export const Sudoku = () => {
   const [sudokuDone, setSudokuDone] = useState(false);
   const [renderSudoku, setRenderSudoku] = useState(0);
   const [sudokuRendered, isSudokuRendered] = useState(false);
+  const [wrongSudoku, isWrongsudoku] = useState(false);
 
   useEffect (() => {
     const newBoard = makepuzzle();
@@ -32,7 +34,9 @@ export const Sudoku = () => {
       alert("¡Enhorabuena, has completado el sudoku!");
       setRenderSudoku(!renderSudoku);
     } else {
-      alert("¡Oh no, me temo que este no es el resultado correcto!");
+      alert('¡Oh no, me temo que este no es el resultado correcto!');
+      isWrongsudoku(true);
+      setRenderSudoku(!renderSudoku);
       //aqui opciones de seguir o de ver la solución y terminar partida
     }
   };
@@ -84,8 +88,15 @@ export const Sudoku = () => {
   };
 
   const restartGame = () => {
+    isWrongsudoku(false);
     setRenderSudoku(!renderSudoku);
   };
+
+  const showSolution = () => {
+    alert(sudokuDone);
+    isWrongsudoku(false);
+    setRenderSudoku(!renderSudoku);
+  }
 
 
   return (
@@ -93,10 +104,18 @@ export const Sudoku = () => {
       <Link to="/">Go back to main game hub menu</Link>
       <h1>Sudoku</h1>
       <button style={{margin: "20px"}} onClick={restartGame}>Restart game</button>
-      <form onSubmit={handleFormSubmit}>
-        <CreateBoard></CreateBoard>
-        <button type="submit" value="Submit" style={{margin: "20px"}}>Comprobar</button>
+      {wrongSudoku? (
+        <div>
+          <button onClick={showSolution} style={{margin: "20px"}}>Ver solución</button>
+        </div>
+      ) : (
+        <form onSubmit={handleFormSubmit}>
+          <CreateBoard></CreateBoard>
+          <button type="submit" value="Submit" style={{margin: "20px"}}>Comprobar</button>
       </form>
+      )}
+      
+
     </div>
   );
 };

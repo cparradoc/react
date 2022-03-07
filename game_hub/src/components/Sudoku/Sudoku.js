@@ -14,15 +14,16 @@ export const Sudoku = () => {
   useEffect (() => {
     const newBoard = makepuzzle();
     setSudokuDone(solvepuzzle(newBoard));
+    console.log("jeje");
     
     for (let i = 0; i < newBoard.length; i++) {
       if (newBoard[i] === null) {
         newBoard[i] = '';
       }
     }
-
     setCellBoard(newBoard);
     isSudokuRendered(true);
+    console.log(sudokuRendered);
   }, [renderSudoku]);
 
   const handleFormSubmit = e => {
@@ -38,13 +39,24 @@ export const Sudoku = () => {
   };
 
   const CreateBoard = () => {
-    if (isSudokuRendered === true){
+    console.log(sudokuRendered);
+    if (sudokuRendered === true){
+      console.log("no mames");
       let board = [];
       let row = [];
       let nRows = Math.sqrt(cellBoard.length);
-      for (let i = 0; i < cellBoard.length; i++) {
-        if (i < nRows) {
+      for (let i = 0, j = 0; i < cellBoard.length; i++, j++) {
+        if (j >= nRows) {
+          j = 0;
           board.push(<Grid xs={9}>{row}</Grid>)
+        }
+
+        if (cellBoard[i] != '') {
+          row.push(
+            <Grid key={i} item xs={Math.floor(12/nRows)}>
+              <input type="text" value={cellBoard[i]} disabled='disabled'/>
+            </Grid>
+          );
         }
       }
 
@@ -64,9 +76,9 @@ export const Sudoku = () => {
 
   return (
     <div>
-    <Link to="/">Go back to main game hub menu</Link>
+      <Link to="/">Go back to main game hub menu</Link>
       <h1>Sudoku</h1>
-        <button onClick={restartGame}>Restart game</button>
+      <button onClick={restartGame}>Restart game</button>
       <form onSubmit={handleFormSubmit}>
         <CreateBoard></CreateBoard>
         <button type="submit" value="Submit">Comprobar</button>

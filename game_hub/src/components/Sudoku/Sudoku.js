@@ -93,10 +93,10 @@ export const Sudoku = () => {
     <div>
       <Link to="/">Go back to main game hub menu</Link>
       <h1>Sudoku</h1>
-      <button onClick={restartGame}>Restart game</button>
+      <button style={{margin: "20px"}} onClick={restartGame}>Restart game</button>
       <form onSubmit={handleFormSubmit}>
         <CreateBoard></CreateBoard>
-        <button type="submit" value="Submit">Comprobar</button>
+        <button type="submit" value="Submit" style={{margin: "20px"}}>Comprobar</button>
       </form>
     </div>
   );

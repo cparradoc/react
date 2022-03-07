@@ -39,14 +39,14 @@ export const Hangman = () => {
     if (word.includes(letter)) {
       let updatedHint = [...hint];
       for ( let i = 0; i < word.length; i++) {
-        if ( word[i] == letter) {
+        if ( word[i] === letter) {
           updatedHint[i] = letter;
         }
       }
       setHint(updatedHint);
       let hasWin = true;
       for (let i = 0; i < updatedHint.length;i++) {
-        if (updatedHint[i] == "_") {
+        if (updatedHint[i] === "_") {
           hasWin = false;
         }
       }
@@ -57,7 +57,7 @@ export const Hangman = () => {
       }
     }else if(!word.includes(letter)) {
       setNTry(nTry + 1);
-      if(nTry == 5) {
+      if(nTry === 5) {
         alert("Ya no te quedan más intentos");
         restartGame();
       }

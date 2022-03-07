@@ -16,7 +16,6 @@ function App() {
         </header>
 
         <Routes>
-          <Route path="/counter" exact element={<Counter />} />
           <Route path="/" exact element={<Home />} />
           <Route path="/tictactoe" exact element={<Tictactoe />} />
           <Route path="/hangman" exact element={<Hangman />} />

@@ -15,7 +15,6 @@ export const Sudoku = () => {
   useEffect (() => {
     const newBoard = makepuzzle();
     setSudokuDone(solvepuzzle(newBoard));
-    console.log(newBoard);
     
     for (let i = 0; i < newBoard.length; i++) {
       if (newBoard[i] === null) {
@@ -40,17 +39,22 @@ export const Sudoku = () => {
 
   const CreateBoard = () => {
     if (sudokuRendered === true){
+      console.log(cellBoard);
       let board = [];
       let row = [];
       let nRows = Math.sqrt(cellBoard.length);
-      for (let i = 0, j = 0; i < cellBoard.length; i++, j++) {
+      for (let i = 0, j = 0; i <= cellBoard.length; i++, j++) {
+        console.log(j);
         if (j >= nRows) {
+          console.log(j);
+          console.log(nRows);
           j = 0;
           board.push(<Grid container className="row" key={j+i} spacing={9}>{row}</Grid>)
           row = [];
+          console.log(row);
         }
 
-        if (cellBoard[i] != '') {
+        if (cellBoard[i] !== '') {
           row.push(
             <Grid className="row" key={i} item xs={Math.floor(12/nRows)}>
               <input type="text" style={{width: "50px", height: "50px"}} value={cellBoard[i]} disabled='disabled'/>

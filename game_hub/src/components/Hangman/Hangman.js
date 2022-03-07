@@ -66,7 +66,7 @@ export const Hangman = () => {
 
   return (
       <div>
-      <Link to="/">Go back to main game hub menu</Link>
+      <Link to="/"><button style={{background: "#87bdd8", color: "black", margin: "20px", padding: "20px"}}>Go back to main game hub menu</button></Link>
         <h1>Hangman</h1>
 
         <button onClick={restartGame}>Restart game</button>
